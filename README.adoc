@@ -1,0 +1,34 @@
+= timer
+
+A shoddy knock-off of the Unix `time` command.
+
+== Usage
+
+[source,shwll]
+----
+timer <executable-name> <params>
+timer16 <executable-name> <params>
+timer32 <executable-name> <params>
+----
+
+`timer` does not use the system path.
+Your executable needs to be in the current working folder, or you need to specify the full path.
+
+On DOS, it won't automatically add the executable's file extension.
+If you want to time `foo.exe`, then `timer foo` won't work.
+
+The `Makefile` generates two DOS executables: `timer16.exe` and `timer32.exe`.
+These are 16-bit and 32-bit DOS executables, respecitvely.
+For `timer32` to work, you need to have a 32-bit DOS expander such as `cwsdpmi.exe`.
+This can be placed anywhere in your `%PATH%`.
+For convenience, `cwsdpmi.exe` is included in the DOS release of `timer`.
+
+== Why?
+
+I was looking for an equivalent for the `time` command in DOS, but I couldn't find one.
+A lot of people told me that I should just use a batch file and run `echo %TIME%` at the start end end, but that wouldn't work on DOSBox because the `%TIME%` system variable isn't implemented.
+
+So, I decided to roll my own.
+
+It's not pretty and it's not clever.
+It just times an app.
