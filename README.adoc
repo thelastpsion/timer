@@ -7,21 +7,26 @@ A shoddy knock-off of the Unix `time` command.
 [source,shwll]
 ----
 timer <executable-name> <params>
-timer16 <executable-name> <params>
 timer32 <executable-name> <params>
 ----
 
 `timer` does not use the system path.
 Your executable needs to be in the current working folder, or you need to specify the full path.
 
-On DOS, it won't automatically add the executable's file extension.
+=== DOS specifics
+On DOS, `timer` won't automatically add the executable's file extension.
 If you want to time `foo.exe`, then `timer foo` won't work.
 
-The `Makefile` generates two DOS executables: `timer16.exe` and `timer32.exe`.
+The `Makefile` generates two DOS executables: `timer.exe` and `timer32.exe`.
 These are 16-bit and 32-bit DOS executables, respecitvely.
 For `timer32` to work, you need to have a 32-bit DOS expander such as `cwsdpmi.exe`.
 This can be placed anywhere in your `%PATH%`.
 For convenience, `cwsdpmi.exe` is included in the DOS release of `timer`.
+
+Why might you need the 32-bit version?
+When DOSBox detects an app using a 32-bit extender, it switches the CPU mode from fixed to dynamic.
+An app that would normally take 1.5 seconds to run, could instead run at closer to 0.3 seconds.
+This side-effect means that you could make DOSBox temporarily switch from fixed to dynamic, such as when running a compiler.
 
 == Why?
 
