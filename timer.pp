@@ -7,7 +7,7 @@ var
     params : Array of String;
     i : integer;
     filename : String;
-    {$if defined(MSDOS) or defined(GO32V2)}
+    {$if defined(MSDOS) or defined(GO32V2) or defined(WINDOWS)}
     extensions : Array of String;
     ext : String;
     found : Boolean;
